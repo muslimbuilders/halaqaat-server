@@ -27,25 +27,25 @@ const halqahSchema = mongoose.Schema({
       required: true,
     },
   },
-  operatingHours: {
-    open: {
+  classHours: {
+    start: {
       type: String,
       required: true,
     },
-    close: {
+    end: {
       type: String,
       required: true,
     },
   },
-  dishesTypes: [
+  halqahTypes: [
     {
       type: String,
       enum: [
         "Tawhid",
         "Fiqh",
         "Hadith",
-        "Pasta",
-        "Pizza",
+        "Tajweed",
+        "Arabiyyah",
         "Dessert",
         "Japanese",
         "Salad",
