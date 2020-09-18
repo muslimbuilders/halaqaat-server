@@ -1,0 +1,20 @@
+{
+  "name": "halaqaat-server",
+  "version": "1.0.0",
+  "description": "Halaqaat Backend server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon run server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "halqah"
+  ],
+  "author": "Yusuf Adeyemo",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.5"
+  }
+}
