@@ -15,12 +15,14 @@ const halqahSchema = mongoose.Schema({
   },
   stars: {
     type: Number,
-    required: true,
   },
   location: {
-    coordinates: {
-      type: [Number],
-      default: [0, 0],
+    city: {
+      type: String,
+      required: ["true", "City is Required"],
+    },
+    state: {
+      type: String,
     },
     address: {
       type: String,
@@ -46,12 +48,11 @@ const halqahSchema = mongoose.Schema({
         "Hadith",
         "Tajweed",
         "Arabiyyah",
-        "Dessert",
-        "Japanese",
-        "Salad",
-        "Seafood",
+        "Yoruba",
+        "Hausa",
+        "Igbo",
+        "Irab",
       ],
-      required: true,
     },
   ],
 });
