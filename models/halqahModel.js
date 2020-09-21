@@ -32,7 +32,6 @@ const halqahSchema = mongoose.Schema({
   classHours: {
     start: {
       type: String,
-      required: true,
     },
     end: {
       type: String,
