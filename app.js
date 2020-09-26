@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 
 
 app.use('/api/v1/halqah', halqahRoute)
-app.use('api/v1/events', eventRoute)
+app.use("/api/v1/events", eventRoute);
 
 
 
