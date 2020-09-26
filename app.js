@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const cors= require("cors");
 const halqahRoute = require('./routes/halqahRoute')
+const eventRoute = require('./routes/eventRoute')
 
 const app = express()
 app.use(cors())
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 
 app.use('/api/v1/halqah', halqahRoute)
+app.use('api/v1/events', eventRoute)
 
 
 
