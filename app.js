@@ -5,6 +5,8 @@ const halqahRoute = require('./routes/halqahRoute')
 const eventRoute = require('./routes/eventRoute')
 
 const app = express()
+
+
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })) // for parsing application/x-www-form-urlencoded
@@ -18,7 +20,7 @@ app.use((req, res, next) => {
   });
 
 
-app.use('/api/v1/halqah', halqahRoute)
+app.use('/api/v1/halqah', halqahRoute);
 app.use("/api/v1/events", eventRoute);
 
 

@@ -15,15 +15,15 @@ exports.createEvent = async (req, res) => {
 };
 
 exports.getAllEvents = async (req, res) => {
-    try{
-        const events = Event.find()
-        res.status(200).json({
-            "status": "success",
-            data: {
-                events
-            }
-        })
-    }catch (error) {
-        console.log(error)
-    }
-}
+  try {
+    const events = await Event.find();
+    res.status(200).json({
+      status: "success",
+      data: {
+        events
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
