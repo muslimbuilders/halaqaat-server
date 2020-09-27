@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const URLSlugs = require("mongoose-url-slugs");
 const halqahSchema = mongoose.Schema({
   imageURL: {
     type: String,
@@ -56,4 +56,5 @@ const halqahSchema = mongoose.Schema({
   ],
 });
 
+halqahSchema.plugin(URLSlugs("name"));
 module.exports = mongoose.model("Halqah", halqahSchema);

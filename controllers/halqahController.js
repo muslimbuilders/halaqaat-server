@@ -1,48 +1,49 @@
-const Halqah  = require('../models/halqahModel')
+const Halqah = require("../models/halqahModel");
 
 exports.createHalqah = async (req, res) => {
-  
-const newHalqah = await Halqah.create(req.body)
-console.log(newHalqah)
-    res.status(201).json({
-        "status": "success",
-        data: {
-        "message": newHalqah
-        }
-    })
-}
+  const newHalqah = await Halqah.create(req.body);
+  console.log(newHalqah);
+  res.status(201).json({
+    status: "success",
+    data: {
+      message: newHalqah,
+    },
+  });
+};
+
+
 
 exports.getAllHalaqaat = async (req, res) => {
-  try{
+  try {
     const Halaqaat = await Halqah.find();
     res.status(200).json({
-        "status": "success",
-        data: {
-            Halaqaat
-        }
-    })
-} catch(err){
+      status: "success",
+      data: {
+        Halaqaat,
+      },
+    });
+  } catch (err) {
     res.status(400).json({
-        "status": "success",
-        err
-    })
-}
-}
+      status: "success",
+      err,
+    });
+  }
+};
 
-exports.getHalqah = async (req, res) =>{
-    try{
-    const halqah = await Halqah.findById(req.param.id)
+exports.getHalqah = async (req, res) => {
+  try {
+    const halqah = await Halqah.findOne({ slug: req.body.slug });
 
     res.status(200).json({
-      "status": "success",
+      status: "success",
       data: {
-          halqah
-      }  
-    })
-} catch(err){
+        halqah,
+      },
+    });
+  } catch (err) {
     res.status(400).json({
-    "status": "failed",
-    err
-    })
-}
-}
+      status: "failed",
+      err,
+    });
+  }
+};
