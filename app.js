@@ -22,7 +22,12 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/halqah', halqahRoute);
 app.use("/api/v1/events", eventRoute);
-
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "Failed",
+    message: `Can't find ${req.originalUrl} on this server `,
+  });
+});
 
 
 
