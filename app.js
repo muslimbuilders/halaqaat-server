@@ -19,7 +19,9 @@ app.use((req, res, next) => {
     next();
   });
 
-
+app.get('/', (req, res)=> {
+  res.send('Hey You, Server is running')
+})
 app.use('/api/v1/halqah', halqahRoute);
 app.use("/api/v1/events", eventRoute);
 app.all("*", (req, res, next) => {
