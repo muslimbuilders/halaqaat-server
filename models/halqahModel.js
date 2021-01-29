@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const URLSlugs = require("mongoose-url-slugs");
+import mongoose from 'mongoose';
+import  URLSlugs from "mongoose-url-slugs"
 const halqahSchema = mongoose.Schema({
   imageURL: {
     type: String,
