@@ -57,4 +57,7 @@ const halqahSchema = mongoose.Schema({
 });
 
 halqahSchema.plugin(URLSlugs("name"));
-module.exports = mongoose.model("Halqah", halqahSchema);
+
+const Halqah = mongoose.model("Halqah", halqahSchema);
+
+export default Halqah

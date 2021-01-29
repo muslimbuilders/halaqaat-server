@@ -1,6 +1,6 @@
-const Event = require("../models/eventModel");
+import  Event from "../models/eventModel.js";
 
-exports.createEvent = async (req, res) => {
+const createEvent = async (req, res) => {
   try {
     const event = await Event.create(req.body);
     res.status(200).json({
@@ -14,7 +14,7 @@ exports.createEvent = async (req, res) => {
   }
 };
 
-exports.getAllEvents = async (req, res) => {
+const getAllEvents = async (req, res) => {
   try {
     const events = await Event.find();
     res.status(200).json({
@@ -27,3 +27,5 @@ exports.getAllEvents = async (req, res) => {
     console.log(error);
   }
 };
+
+export {createEvent, getAllEvents}

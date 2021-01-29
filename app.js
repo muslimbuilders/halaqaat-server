@@ -1,5 +1,6 @@
 import express from 'express';
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 import cors from "cors";
 import  halqahRoute from './routes/halqahRoute.js'
 import eventRoute from './routes/eventRoute.js'
@@ -33,4 +34,4 @@ app.all("*", (req, res, next) => {
 
 
 
-module.exports = app;
+export default app;

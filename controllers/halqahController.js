@@ -1,6 +1,6 @@
-const Halqah = require("../models/halqahModel");
+import Halqah from "../models/halqahModel.js";
 
-exports.createHalqah = async (req, res) => {
+const createHalqah = async (req, res) => {
   const newHalqah = await Halqah.create(req.body);
   console.log(newHalqah);
   res.status(201).json({
@@ -13,7 +13,7 @@ exports.createHalqah = async (req, res) => {
 
 
 
-exports.getAllHalaqaat = async (req, res) => {
+const getAllHalaqaat = async (req, res) => {
   try {
     const Halaqaat = await Halqah.find();
     res.status(200).json({
@@ -30,7 +30,7 @@ exports.getAllHalaqaat = async (req, res) => {
   }
 };
 
-exports.getHalqah = async (req, res) => {
+const getHalqah = async (req, res) => {
   try {
     const halqah = await Halqah.findOne({ slug: req.body.slug });
 
@@ -47,3 +47,5 @@ exports.getHalqah = async (req, res) => {
     });
   }
 };
+
+export {createHalqah, getAllHalaqaat, getHalqah}

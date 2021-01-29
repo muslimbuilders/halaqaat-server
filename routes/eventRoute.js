@@ -6,4 +6,4 @@ const router = express.Router()
 
 router.route("/").get(getAllEvents).post(createEvent);
 
-module.exports = router
+export default router
