@@ -1,8 +1,9 @@
-const express = require('express')
-require('dotenv').config()
-const cors= require("cors");
-const halqahRoute = require('./routes/halqahRoute')
-const eventRoute = require('./routes/eventRoute')
+import express from 'express';
+import dotenv from 'dotenv'
+dotenv.config()
+import cors from "cors";
+import  halqahRoute from './routes/halqahRoute.js'
+import eventRoute from './routes/eventRoute.js'
 
 const app = express()
 
@@ -33,4 +34,4 @@ app.all("*", (req, res, next) => {
 
 
 
-module.exports = app;
+export default app;
