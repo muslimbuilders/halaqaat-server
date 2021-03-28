@@ -8,6 +8,6 @@ import {
 const router = express.Router();
 
 router.route("/").get(getAllHalaqaat).post(createHalqah);
-router.route("/:slug").get(getHalqah);
+router.route("/:id").get(getHalqah);
 
 export default router;

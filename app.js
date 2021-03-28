@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 dotenv.config()
+import {errorHandler} from './utils/errorHandler.js'
 import morgan from 'morgan'
 import cors from "cors";
 import  halqahRoute from './routes/halqahRoute.js'
@@ -22,6 +23,7 @@ app.get('/', (req, res)=> {
 })
 app.use('/api/v1/halqah', halqahRoute);
 app.use("/api/v1/events", eventRoute);
+app.use(errorHandler)
 app.all("*", (req, res, next) => {
   res.status(404).json({
     status: "Failed",
