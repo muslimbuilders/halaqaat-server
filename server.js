@@ -9,6 +9,11 @@ mongoose.connect(DB, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTop
     console.log('DB Connection successful')
 })
 
-app.listen(PORT, () =>{
+const server = app.listen(PORT, () =>{
  console.log(`App running on PORT https://localhost:${PORT}`)
+})
+
+process.on('unhandledRejection', (err, promise) =>{
+    console.log(`Error: ${err.message}`)
+    server.close(()=> process.exit(1))
 })

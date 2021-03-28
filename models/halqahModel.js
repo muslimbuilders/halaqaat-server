@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import  URLSlugs from "mongoose-url-slugs"
 const halqahSchema = mongoose.Schema({
-  imageURL: {
+  name: {
     type: String,
     required: true,
   },
-  name: {
+  imageURL: {
     type: String,
     required: true,
   },
@@ -17,18 +17,24 @@ const halqahSchema = mongoose.Schema({
     type: Number,
   },
   location: {
-    city: {
+    type: {
       type: String,
-      required: ["true", "City is Required"],
-    },
-    state: {
-      type: String,
-    },
-    address: {
-      type: String,
+      enum: ["Point"],
       required: true,
     },
+    coordinates: {
+      type: [Number],
+      required: true,
+      index: '2dsphere'
+    },
   },
+  formattedAddress: { type: String },
+  street: { type: String },
+  city: { type: String },
+  state: { type: String },
+  zipcode: { type: String },
+  country: { type: String },
+
   classHours: {
     start: {
       type: String,
