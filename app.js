@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 dotenv.config()
+import morgan from 'morgan'
 import cors from "cors";
 import  halqahRoute from './routes/halqahRoute.js'
 import eventRoute from './routes/eventRoute.js'
@@ -11,15 +12,11 @@ const app = express()
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })) // for parsing application/x-www-form-urlencoded
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header(
-//       "Access-Control-Allow-Headers",
-//       "Origin, X-Requested-With, Content-Type, Accept"
-//     );
-//     next();
-//   });
 
+//Use Morgan dev
+if(process.env.NODE_ENV === 'development'){
+app.use(morgan('dev'))
+}
 app.get('/', (req, res)=> {
   res.send('Hey You, Server is running')
 })
