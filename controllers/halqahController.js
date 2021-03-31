@@ -3,7 +3,6 @@ import Halqah from "../models/halqahModel.js";
 
 const createHalqah = async (req, res) => {
   const newHalqah = await Halqah.create(req.body);
-  console.log(newHalqah);
   res.status(201).json({
     status: "success",
     data: {

@@ -22,7 +22,8 @@
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.5",
-    "mongoose-url-slugs": "^1.0.2"
+    "mongoose-url-slugs": "^1.0.2",
+    "node-geocoder": "^3.27.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
