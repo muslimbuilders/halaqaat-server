@@ -13,7 +13,19 @@ const createHalqah = async (req, res) => {
 
 const getAllHalaqaat = async (req, res, next) => {
   try {
-    const halqah = await Halqah.find();
+    let query;
+    const requestQuery = {...req.query}
+
+    //remove fields
+    const removedFields = ['select']
+    removedFields.forEach(param => delete requestQuery[param])
+    console.log(removedFields)
+
+    if(req.query.select){
+      const fields = req.query.select.split(',').join(' ')
+      query = query.select(fields)
+    }
+    const halqah = await query;
     res.status(200).json({
       status: "success",
       length: halqah.length,

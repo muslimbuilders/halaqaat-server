@@ -21,8 +21,8 @@ app.use(morgan('dev'))
 app.get('/', (req, res)=> {
   res.send('Hey You, Server is running')
 })
-app.use('/api/v1/halqah', halqahRoute);
-app.use("/api/v1/events", eventRoute);
+app.use("/api/v1/halqah", cors(), halqahRoute);
+app.use("/api/v1/events", cors(), eventRoute);
 app.use(errorHandler)
 app.all("*", (req, res, next) => {
   res.status(404).json({
