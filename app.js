@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv'
 dotenv.config()
 import {errorHandler} from './utils/errorHandler.js'
-import morgan from 'morgan'
 import cors from "cors";
 import  halqahRoute from './routes/halqahRoute.js'
 import eventRoute from './routes/eventRoute.js'
@@ -15,9 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false })) // for parsing application/x-www-form-urlencoded
 
 //Use Morgan dev
-if(process.env.NODE_ENV === 'development'){
-app.use(morgan('dev'))
-}
+
 app.get('/', (req, res)=> {
   res.send('Hey You, Server is running')
 })
