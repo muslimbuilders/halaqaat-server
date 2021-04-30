@@ -1,4 +1,3 @@
-import {ErrorResponse} from '../utils/errorResponse.js'
 import Halqah from "../models/halqahModel.js";
 
 const createHalqah = async (req, res) => {
@@ -48,7 +47,7 @@ const getHalqah = async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(new ErrorResponse(`Halqah with the id of ${req.params.id}`, 400));
+    console.log(err);
   }
 };
 
