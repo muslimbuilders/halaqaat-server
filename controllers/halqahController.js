@@ -1,5 +1,5 @@
 import Halqah from "../models/halqahModel.js";
-
+import asyncHandler from '../middleware/asyncHandler.js'
 const createHalqah = async (req, res) => {
   const newHalqah = await Halqah.create(req.body);
   res.status(201).json({
@@ -10,31 +10,27 @@ const createHalqah = async (req, res) => {
   });
 };
 
-const getAllHalaqaat = async (req, res, next) => {
-  try {
-    let query;
-    const requestQuery = {...req.query}
+const getAllHalaqaat = asyncHandler ( async (req, res, next) => {
+  // try {
+  //   let query;
+  //   const requestQuery = {...req.query}
 
-    //remove fields
-    const removedFields = ['select']
-    removedFields.forEach(param => delete requestQuery[param])
-    console.log(removedFields)
+  //remove fields
+  //const removedFields = ['select']
+  // removedFields.forEach(param => delete requestQuery[param])
+  // console.log(removedFields)
 
-    if(req.query.select){
-      const fields = req.query.select.split(',').join(' ')
-      query = query.select(fields)
-    }
-    const halqah = await query;
-    res.status(200).json({
-      status: "success",
-      length: halqah.length,
-
-      halqah,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
+  // if(req.query.select){
+  //   const fields = req.query.select.split(',').join(' ')
+  //   query = query.select(fields)
+  // }
+  const halqah = await Halqah.find({});
+  res.status(200).json({
+    status: "success",
+    length: halqah.length,
+    data: { halqah },
+  });
+});
 
 const getHalqah = async (req, res, next) => {
   try {
