@@ -27,8 +27,7 @@ const getAllHalaqaat = asyncHandler ( async (req, res, next) => {
   const halqah = await Halqah.find({});
   res.status(200).json({
     status: "success",
-    length: halqah.length,
-    data: { halqah },
+    data: { halqah }
   });
 });
 
