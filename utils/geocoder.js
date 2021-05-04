@@ -1,4 +1,5 @@
-import NodeGeocoder from 'node-geocoder';
+import NodeGeocoder from 'node-geocoder'; 
+
 const options = {
   provider: 'mapquest',
   httpAdapter: 'https',
