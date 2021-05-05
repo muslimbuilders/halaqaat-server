@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import  URLSlugs from "mongoose-url-slugs"
-import geocoder  from '../utils/geocoder.js';
+import URLSlugs from 'mongoose-url-slugs';
+import geocoder from '../utils/geocoder.js';
 
 const halqahSchema = mongoose.Schema({
   name: {
@@ -22,11 +22,11 @@ const halqahSchema = mongoose.Schema({
   location: {
     type: {
       type: String,
-      enum: ["Point"],
+      enum: ['Point'],
     },
     coordinates: {
       type: [Number],
-      index: "2dsphere",
+      index: '2dsphere',
     },
     formattedAddress: { type: String },
     street: { type: String },
@@ -49,25 +49,25 @@ const halqahSchema = mongoose.Schema({
     {
       type: String,
       enum: [
-        "Tawhid",
-        "Fiqh",
-        "Hadith",
-        "Tajweed",
-        "Arabiyyah",
-        "Yoruba",
-        "Hausa",
-        "Igbo",
-        "Irab",
+        'Tawhid',
+        'Fiqh',
+        'Hadith',
+        'Tajweed',
+        'Arabiyyah',
+        'Yoruba',
+        'Hausa',
+        'Igbo',
+        'Irab',
       ],
     },
   ],
 });
 
-halqahSchema.plugin(URLSlugs("name"));
-halqahSchema.pre("save", async function (next) {
+halqahSchema.plugin(URLSlugs('name'));
+halqahSchema.pre('save', async function (next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {
-    type: "Point",
+    type: 'Point',
     coordinates: [loc[0].longitude, loc[1].latitude],
     formattedAddress: loc[0].formattedAddress,
     street: loc[0].streetName,
@@ -80,6 +80,6 @@ halqahSchema.pre("save", async function (next) {
   next();
 });
 
-const Halqah = mongoose.model("Halqah", halqahSchema);
+const Halqah = mongoose.model('Halqah', halqahSchema);
 
-export default Halqah
+export default Halqah;
