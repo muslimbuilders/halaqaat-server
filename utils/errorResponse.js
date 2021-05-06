@@ -6,4 +6,4 @@ class ErrorResponse extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
-export default { ErrorResponse };
+export default  ErrorResponse;
