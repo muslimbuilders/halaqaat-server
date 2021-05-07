@@ -14,7 +14,7 @@ const createEvent = asyncHandler(async (req, res, next) => {
 
 const getAllEvents = asyncHandler(async (req, res, next) => {
   console.log(req.query.limit);
-  const { page = 1, limit = 4 } = req.query
+  const { page = 1, limit = 10 } = req.query
 
   const events = await Event.find({}).skip((limit * page) - limit).limit(limit * 1);
 
