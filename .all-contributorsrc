@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "kennie-larkson",
+      "name": "LAWAL ABD'KEHINDE",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32939546?v=4",
+      "profile": "https://kenniecodecamp.netlify.app/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "halaqaat-server",
+  "projectOwner": "muslimbuilders",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
