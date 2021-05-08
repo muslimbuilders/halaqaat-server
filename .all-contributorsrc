@@ -13,6 +13,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Yusadolat",
+      "name": "Yusuf Adeyemo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10975011?v=4",
+      "profile": "https://yusadolat.netlify.app",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
