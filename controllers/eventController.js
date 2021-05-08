@@ -21,4 +21,16 @@ const getAllEvents = asyncHandler(async (req, res, next) => {
   });
 });
 
-export { createEvent, getAllEvents };
+const getEvent = asyncHandler(async (req, res, next) => {
+  
+  const { id } = req.params
+  const event = await Event.findById( id );
+  res.status(200).json({
+    status: 'success',
+    data: {
+      event
+    },
+  });
+});
+
+export { createEvent, getAllEvents, getEvent };
