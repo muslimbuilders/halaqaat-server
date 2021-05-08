@@ -46,8 +46,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://kenniecodecamp.netlify.app/"><img src="https://avatars.githubusercontent.com/u/32939546?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LAWAL ABD'KEHINDE</b></sub></a><br /><a href="https://github.com/muslimbuilders/halaqaat-server/commits?author=kennie-larkson" title="Code">💻</a></td>
     <td align="center"><a href="https://yusadolat.netlify.app"><img src="https://avatars.githubusercontent.com/u/10975011?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yusuf Adeyemo</b></sub></a><br /><a href="#infra-Yusadolat" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/muslimbuilders/halaqaat-server/commits?author=Yusadolat" title="Tests">⚠️</a> <a href="https://github.com/muslimbuilders/halaqaat-server/commits?author=Yusadolat" title="Code">💻</a></td>
+    <td align="center"><a href="https://kenniecodecamp.netlify.app/"><img src="https://avatars.githubusercontent.com/u/32939546?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LAWAL ABD'KEHINDE</b></sub></a><br /><a href="https://github.com/muslimbuilders/halaqaat-server/commits?author=kennie-larkson" title="Code">💻</a></td>
+    
   </tr>
 </table>
 
