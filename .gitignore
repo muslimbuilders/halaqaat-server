@@ -1,6 +1,2 @@
 node_modules/
 .env/
-<<<<<<< HEAD
-=======
-
->>>>>>> 62242f9 (used git rm .env --cached to remove .env file)
