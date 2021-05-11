@@ -20,6 +20,8 @@ const getAllEvents = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
+    per_page: limit,
+    numOfPages: page,
     data: {
       events,
     },

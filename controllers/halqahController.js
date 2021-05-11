@@ -20,6 +20,7 @@ const getAllHalaqaat = asyncHandler(async (req, res, next ) => {
   const halqah = await Halqah.find({}).skip((limit * page) - limit).limit(limit * 1);
   res.status(200).json({
     status: 'success',
+    per_page: limit,
     data: { halqah },
   });
 });

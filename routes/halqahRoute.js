@@ -9,6 +9,6 @@ import {
 const router = express.Router();
 
 router.route('/').get(getAllHalaqaat).post(createHalqah);
-router.route('/:id').get(getHalqah).post(updateHalqah);
+router.route('/:id').get(getHalqah).put(updateHalqah).post(updateHalqah);
 
 export default router;
