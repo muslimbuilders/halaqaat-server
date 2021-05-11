@@ -42,6 +42,7 @@ const updateHalqah = asyncHandler( async (req, res, next ) => {
   const halqah = await Halqah.findByIdAndUpdate(id, body, {
     new: true,
     runValidators: true,
+    useFindAndModify: false,
   });
   res.status(200).json({
     status: 'success',
