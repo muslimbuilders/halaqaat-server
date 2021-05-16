@@ -1,7 +1,7 @@
 import Halqah from '../models/halqahModel.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 
-const createHalqah = async (req, res) => {
+const createHalqah = asyncHandler(async (req, res) => {
   const newHalqah = await Halqah.create(req.body);
   res.status(201).json({
     status: 'success',
@@ -9,7 +9,7 @@ const createHalqah = async (req, res) => {
       message: newHalqah,
     },
   });
-};
+});
 
 const getAllHalaqaat = asyncHandler(async (req, res, next) => {
   
