@@ -40,4 +40,11 @@ const getEvent = asyncHandler(async (req, res, next) => {
   });
 });
 
-export { createEvent, getAllEvents, getEvent };
+const updateEvent = asyncHandler(async (req, res, next) => {
+  const event = await Event.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+});
+
+export { createEvent, getAllEvents, getEvent, updateEvent };
