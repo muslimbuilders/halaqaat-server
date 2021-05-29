@@ -1,4 +1,4 @@
-import User from './userModel.js';
+import User from '../users/userModel.js';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';

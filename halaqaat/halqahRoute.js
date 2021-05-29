@@ -4,7 +4,7 @@ import {
   getAllHalaqaat,
   getHalqah,
   updateHalqah
-} from '../controllers/halqahController.js';
+} from './halqahController.js';
 
 const router = express.Router();
 
