@@ -1,4 +1,4 @@
-import Halqah from '../models/halqahModel.js';
+import Halqah from './halqahModel.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 
 const createHalqah = asyncHandler(async (req, res, next ) => {

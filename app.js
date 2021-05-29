@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { errorHandler } from './utils/errorHandler.js';
 import cors from 'cors';
-import halqahRoute from './routes/halqahRoute.js';
+import halqahRoute from './halaqaat/halqahRoute.js';
 import eventRoute from './events/eventRoute.js';
 
 
