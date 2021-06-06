@@ -29,9 +29,12 @@ const getHalqah = asyncHandler( async (req, res, next ) => {
 
   const { id } = req.params
   const halqah = await Halqah.findById( id );
+
+  const { name, location, coordinates, occurrence, classHours } = halqah;
+
   res.status(200).json({
     status: 'success',
-    data: { halqah },
+    data: { name, location, coordinates, occurrence, classHours },
   });
 }); 
 

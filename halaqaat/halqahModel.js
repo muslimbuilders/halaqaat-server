@@ -45,6 +45,7 @@ const halqahSchema = mongoose.Schema({
       required: true,
     },
   },
+  occurrence: { type: String, enum: ['weekly', 'biweekly', 'monthly'] },
   halqahTypes: [
     {
       type: String,
