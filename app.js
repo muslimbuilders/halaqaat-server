@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { errorHandler } from './utils/errorHandler.js';
 import cors from 'cors';
 import halqahRoute from './halaqaat/halqahRoute.js';
-import eventRoute from './events/eventRoute.js';
+import eventRoute from './core/modules/events/eventRoute.js.js';
 
 
 dotenv.config();
