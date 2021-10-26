@@ -4,7 +4,7 @@ import { errorHandler } from './utils/errorHandler.js';
 import cors from 'cors';
 import halqahRoute from './halaqaat/halqahRoute.js';
 import eventRoute from './events/eventRoute.js';
-
+import authRoutes from './auth/authRoute.js';
 
 dotenv.config();
 
@@ -19,8 +19,7 @@ app.use(express.urlencoded({ extended: false })); // for parsing application/x-w
 app.get('/', (req, res) => {
   res.send('Hey You, Server is running');
 });
-app.use('/api/v1/halqah', halqahRoute);
-app.use('/api/v1/events', eventRoute);
+app.use('/api/v1', [halqahRoute, eventRoute, authRoutes]);
 app.use(errorHandler);
 app.all('*', (req, res, next) => {
   res.status(404).json({

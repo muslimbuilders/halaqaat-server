@@ -1,14 +1,11 @@
 import express from 'express';
-import {
-  createHalqah,
-  getAllHalaqaat,
-  getHalqah,
-  updateHalqah
-} from './authController.js';
+import asyncHandler from '../middleware/asyncHandler.js';
+import AuthController from './authController.js';
 
 const router = express.Router();
 
-router.route('/').get(getAllHalaqaat).post(createHalqah);
-router.route('/:id').get(getHalqah).patch(updateHalqah).post(updateHalqah);
+router.post("/auth/signin", asyncHandler(AuthController.signin));
+router.post("/auth/signup", asyncHandler(AuthController.signup));
+router.post("/auth/token/refresh", asyncHandler(AuthController.refreshToken));
 
 export default router;

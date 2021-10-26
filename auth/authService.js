@@ -1,60 +1,76 @@
-import UserModel from '../users/userModel'
-import {hash, compare} from 'bcrypt';
+import UserModel from '../users/userModel.js'
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv';
+
+
+
+dotenv.config();
 
 
 const secret = process.env.SECRET;
-
 export class AuthService {
-  async signin({email, password}) {
-    const user = UserModel.findOne({email});
+  static async refreshToken({accessTokenParam, refreshTokenParam}) {
+    let accessUser = await AuthService.verifyToken(accessTokenParam);
+    if (!user) throw new Error("Unauthorised");
+    const refreshuser = await AuthService.verifyToken(refreshTokenParam, true);
+    if (!refreshuser) throw new Error("Unauthorised");
+    const {refreshToken, accessToken} = await AuthService.getTokens(user);
+    const user = await AuthService.updateUser(refreshUser.id, {refreshToken});
+    delete user.password;
+    return {...user, accessToken};
+  }
+
+  static async signin({email, password}) {
+    let user = await UserModel.findOne({email});
     if (!user) throw new Error("Incorrect email/password");
-    const isCorrectPassword = this.comparePassword(password, user.password);
+    const isCorrectPassword = await AuthService.comparePassword(password, user.password);
 
     if (!isCorrectPassword) throw new Error("Incorrect email/password")
 
-    // move this to hook
-    const accessToken = await this.generateToken(user);
-    const refreshToken = await this.generateToken(user, true);
-    user.refreshToken = refreshToken;
-    await user.save();
-    const {password, ...rest} = user;
-    return {rest, refreshToken, accessToken};
-  },
+    const {refreshToken, accessToken} = await AuthService.getTokens(user);
+    user = await AuthService.updateUser(user.id, {refreshToken});
+    delete user.password;
+    return {...user, accessToken};
+  }
 
-  async signup({email, password, firstName, lastName}) {
-    const user = UserModel.findOne({email: email});
+  static async signup({email, password, firstName, lastName}) {
+    let user = await UserModel.findOne({email: email});
     if (user) throw new Error("User Already Exists");
-    const hashedPassword = await this.hashPassword(password);
-    const newUser = UserModel.Create({email, password: hashedPassword, firsName, lastName});
-    // move this to hook
-    const accessToken = await this.generateToken(newUser);
-    const refreshToken = await this.generateToken(newUser, true);
-    newUser.refreshToken = refreshToken;
-    await newUser.save();
-    c
-    const {password, ...rest} = user;
-    return {...rest, refreshToken, accessToken};
-  },
 
-  async hashPassword (password) {
-    return hash(password, 10);
-  },
+    if (!password) throw new Error("Password is required");
+    const hashedPassword = await AuthService.hashPassword(password);
+    user = await UserModel.create({email, password: hashedPassword, firstName, lastName});
+    const {refreshToken, accessToken} = await AuthService.getTokens(user);
+    user = await AuthService.updateUser(user.id, {refreshToken})
+    delete user.password;
+    return {...user, accessToken};
+  }
 
-  async comparePassword (password, hashedPassword) {
-    return compare(password, hashedPassword);
-  },
-  async generateToken(user, isRefresh = false) {
+  static async hashPassword (password) {
+    return bcrypt.hash(password, 10);
+  }
+
+  static async comparePassword (password, hashedPassword) {
+    return bcrypt.compare(password, hashedPassword);
+  }
+  static async generateToken(user, isRefresh = false) {
     const {password, ...rest} = user;
     if (isRefresh) return jwt.sign(rest, secret);
 
-    return return jwt.sign(rest, secret, {expiresIn: "20m", algorithm: 'ES256'});
+    return jwt.sign(rest, secret, {expiresIn: "20m"});
   }
+  static async getTokens(user) {
+    const accessToken = await AuthService.generateToken(user);
+    const refreshToken = await AuthService.generateToken(user, true);
 
-  async verifyToken(token) {
-    const {email} = await jwt.verify(token, secret);
-    const user = UserModel.find({email});
-    if (!user) throw new Error("Inavlid Token");
-    return user;
+    return {accessToken, refreshToken};
+  }
+  static async verifyToken(token, isRefresh = false) {
+    const {email} = await jwt.verify(token, secret, {ignoreExpired: isRefresh});
+    return UserModel.find({email});
+  }
+  static async updateUser(id, data) {
+    return UserModel.findByIdAndUpdate(id, {$set: data}, {new: true}).lean()
   }
 }
