@@ -1,10 +1,16 @@
-import express from 'express';
+import route from '../core/common/route.js';
 
 import { createEvent, getAllEvents, getEvent } from './eventController.js';
 
-const router = express.Router();
 
-router.route('/').get(getAllEvents).post(createEvent);
-router.route('/:id').get(getEvent)
-
-export default router;
+const routes = [{
+  path: "/events", handler: getAllEvents, method: 'GET', auth: true
+},
+{
+  path: "/events", handler: createEvent, method: 'POST', auth: true
+},
+{
+  path: "/events/:id", handler: getEvent, method: 'GET', auth: true
+},
+]
+export default route(routes);

@@ -1,11 +1,16 @@
 import express from 'express';
-import asyncHandler from '../middleware/asyncHandler.js';
+import asyncHandler from '../core/middleware/asyncHandler.js';
 import AuthController from './authController.js';
+import route from '../core/common/route.js';
 
-const router = express.Router();
-
-router.post("/auth/signin", asyncHandler(AuthController.signin));
-router.post("/auth/signup", asyncHandler(AuthController.signup));
-router.post("/auth/token/refresh", asyncHandler(AuthController.refreshToken));
-
-export default router;
+const routes = [{
+  path: "/auth/signin", handler: AuthController.signin, method: 'POST', auth: false
+},
+{
+  path: "/auth/signup", handler: AuthController.signup, method: 'POST', auth: false
+},
+{
+  path: "/auth/token/refresh", handler: AuthController.refreshToken, method: 'POST', auth: false
+},
+]
+export default route(routes);
