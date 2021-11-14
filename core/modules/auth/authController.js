@@ -1,4 +1,4 @@
-import asyncHandler from '../core/middleware/asyncHandler.js';
+import asyncHandler from '../../middleware/asyncHandler.js';
 import AuthService  from './authService.js';
 import { SignupDto } from './dto/signup.dto.js';
 

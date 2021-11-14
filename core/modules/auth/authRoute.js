@@ -1,7 +1,7 @@
 import express from 'express';
-import asyncHandler from '../core/middleware/asyncHandler.js';
+import asyncHandler from '../..//middleware/asyncHandler.js';
 import AuthController from './authController.js';
-import route from '../core/common/route.js';
+import route from '../../common/route.js';
 
 const routes = [{
   path: "/auth/signin", handler: AuthController.signin, method: 'POST', auth: false

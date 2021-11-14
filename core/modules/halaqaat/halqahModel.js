@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import URLSlugs from 'mongoose-url-slugs';
-import geocoder from '../utils/geocoder.js';
+import geocoder from '../../../utils/geocoder.js';
 
 const halqahSchema = mongoose.Schema({
   name: {

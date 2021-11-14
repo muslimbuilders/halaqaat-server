@@ -1,4 +1,4 @@
-import route from '../core/common/route.js';
+import route from '../../common/route.js';
 
 import { createEvent, getAllEvents, getEvent } from './eventController.js';
 

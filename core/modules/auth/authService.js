@@ -1,8 +1,7 @@
-import UserModel from '../models/user.js'
+import UserModel from '../../../models/user.js'
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-
-const secret = process.env.SECRET;
+import envs from '../../../config/env.js'
 
 const refreshToken = async ({accessTokenParam, refreshTokenParam}) => {
   let accessUser = await verifyToken(accessTokenParam);
@@ -52,9 +51,9 @@ async function comparePassword(password, hashedPassword) {
 async function generateToken(user, isRefresh = false) {
   const {password, ...rest} = user;
   console.log({rest})
-  if (isRefresh) return jwt.sign(rest, secret);
+  if (isRefresh) return jwt.sign(rest, envs.secret);
 
-  return jwt.sign(rest, secret, {expiresIn: "20m"});
+  return jwt.sign(rest, envs.secret, {expiresIn: "20m"});
 }
 
 async function getTokens({id, email}) {
@@ -65,7 +64,7 @@ async function getTokens({id, email}) {
 }
 
 async function verifyToken(token, isRefresh = false) {
-  const {email} = await jwt.verify(token, secret, {ignoreExpired: isRefresh});
+  const {email} = await jwt.verify(token, envs.secret, {ignoreExpired: isRefresh});
   return UserModel.find({email});
 }
 

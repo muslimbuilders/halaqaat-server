@@ -1,5 +1,5 @@
 import Event from './eventModel.js';
-import asyncHandler from '../core/middleware/asyncHandler.js';
+import asyncHandler from '../../middleware/asyncHandler.js';
 
 const createEvent = async (req, res, next) => {
 

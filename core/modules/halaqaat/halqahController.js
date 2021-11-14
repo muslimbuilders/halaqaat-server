@@ -1,5 +1,5 @@
 import Halqah from './halqahModel.js';
-import asyncHandler from '../core/middleware/asyncHandler.js';
+import asyncHandler from '../../middleware/asyncHandler.js';
 
 const createHalqah = asyncHandler(async (req, res, next) => {
   const newHalqah = await Halqah.create(req.body);

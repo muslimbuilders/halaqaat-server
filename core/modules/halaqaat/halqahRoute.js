@@ -1,5 +1,5 @@
 import express from 'express';
-import route from '../core/common/route.js';
+import route from '../../common/route.js';
 import {
   createHalqah,
   getAllHalaqaat,

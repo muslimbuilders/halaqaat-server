@@ -1,14 +1,12 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors';
-import halqahRoute from './halaqaat/halqahRoute.js';
-import eventRoute from './events/eventRoute.js';
-import authRoutes from './auth/authRoute.js';
+import halqahRoute from './core/modules/halaqaat/halqahRoute.js';
+import eventRoute from './core/modules/events/eventRoute.js';
+import authRoutes from './core/modules/auth/authRoute.js';
 import { errorHandler } from './core/common/errorHandler/errorHandler.js';
 
-dotenv.config();
 
 const app = express();
 

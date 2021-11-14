@@ -13,7 +13,6 @@ const authenticateRoute = (auth, req, res, next) => {
 const route = (routes) => {
   const router = express.Router();
   routes.forEach(({method, handler, auth, path}) => {
-    console.log({path, method})
     router[method.toLowerCase()](path, (req,res,next) => authenticateRoute(auth, req, res, next), asyncHandler(handler))
   })
   return router;
