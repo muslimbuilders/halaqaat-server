@@ -1,5 +1,5 @@
 import Halqah from './halqahModel.js';
-import asyncHandler from '../middleware/asyncHandler.js';
+import asyncHandler from '../../middleware/asyncHandler.js';
 
 const createHalqah = asyncHandler(async (req, res, next) => {
   const newHalqah = await Halqah.create(req.body);
@@ -13,7 +13,7 @@ const createHalqah = asyncHandler(async (req, res, next) => {
 
 const getAllHalaqaat = asyncHandler(async (req, res, next) => {
   const { page = 1, limit = 10 } = req.query;
-
+  console.log("req user", req.user)
   const halqah = await Halqah.find({})
     .skip(limit * page - limit)
     .limit(limit * 1);

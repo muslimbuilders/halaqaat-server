@@ -1,21 +1,20 @@
 import mongoose from 'mongoose';
 import app from './app.js';
+import envs from './config/env.js'
 
-const PORT = process.env.PORT;
-
-const DB = process.env.DATABASE_URL;
 mongoose
-  .connect(DB, {
+  .connect(envs.dbUrl, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => {
     console.log('DB Connection successful');
   });
 
-const server = app.listen(PORT, () => {
-  console.log(`App running on PORT https://localhost:${PORT}`);
+const server = app.listen(envs.port, () => {
+  console.log(`App running on PORT https://localhost:${envs.port}`);
 });
 
 process.on('unhandledRejection', (err, promise) => {
