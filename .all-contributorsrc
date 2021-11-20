@@ -14,7 +14,6 @@
         "code"
       ]
     },
-    
     {
       "login": "Yusadolat",
       "name": "Yusuf Adeyemo",
@@ -24,6 +23,17 @@
         "infra",
         "test",
         "code"
+      ]
+    },
+    {
+      "login": "Iameaszy",
+      "name": "Yusuf Adeniyi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18369571?v=4",
+      "profile": "https://github.com/Iameaszy",
+      "contributions": [
+        "code",
+        "doc",
+        "infra"
       ]
     }
   ],
