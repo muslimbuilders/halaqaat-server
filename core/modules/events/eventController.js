@@ -1,7 +1,7 @@
 import Event from './eventModel.js';
-import asyncHandler from '../middleware/asyncHandler.js';
+import asyncHandler from '../../middleware/asyncHandler.js';
 
-const createEvent = asyncHandler(async (req, res, next) => {
+const createEvent = async (req, res, next) => {
 
   const event = await Event.create(req.body);
   res.status(200).json({
@@ -10,10 +10,10 @@ const createEvent = asyncHandler(async (req, res, next) => {
       event,
     },
   });
-});
+}
 
-const getAllEvents = asyncHandler(async (req, res, next) => {
-  
+const getAllEvents = async (req, res, next) => {
+  console.log("user", req.user);
   const { page = 1, limit = 10 } = req.query
 
   const events = await Event.find({}).skip((limit * page) - limit).limit(limit * 1);
@@ -26,9 +26,9 @@ const getAllEvents = asyncHandler(async (req, res, next) => {
       events,
     },
   });
-});
+}
 
-const getEvent = asyncHandler(async (req, res, next) => {
+const getEvent = async (req, res, next) => {
   
   const { id } = req.params
   const event = await Event.findById( id );
@@ -38,6 +38,6 @@ const getEvent = asyncHandler(async (req, res, next) => {
       event
     },
   });
-});
+}
 
 export { createEvent, getAllEvents, getEvent };
