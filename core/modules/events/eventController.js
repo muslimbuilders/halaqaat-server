@@ -1,22 +1,23 @@
 import Event from './eventModel.js';
-import asyncHandler from '../../middleware/asyncHandler.js';
 
 const createEvent = async (req, res, next) => {
-
-  const event = await Event.create(req.body);
+  const userId = req.params.id;
+  const event = await Event.create({ ...req.body, userId });
   res.status(200).json({
     status: 'success',
     data: {
       event,
     },
   });
-}
+};
 
 const getAllEvents = async (req, res, next) => {
-  console.log("user", req.user);
-  const { page = 1, limit = 10 } = req.query
+  console.log('user', req.user);
+  const { page = 1, limit = 10 } = req.query;
 
-  const events = await Event.find({}).skip((limit * page) - limit).limit(limit * 1);
+  const events = await Event.find({})
+    .skip(limit * page - limit)
+    .limit(limit * 1);
 
   res.status(200).json({
     status: 'success',
@@ -26,18 +27,17 @@ const getAllEvents = async (req, res, next) => {
       events,
     },
   });
-}
+};
 
 const getEvent = async (req, res, next) => {
-  
-  const { id } = req.params
-  const event = await Event.findById( id );
+  const { id } = req.params;
+  const event = await Event.findById(id);
   res.status(200).json({
     status: 'success',
     data: {
-      event
+      event,
     },
   });
-}
+};
 
 export { createEvent, getAllEvents, getEvent };
