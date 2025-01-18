@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import app from './app.js';
 import envs from './config/env.js'
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 mongoose
   .connect(envs.dbUrl, {
@@ -23,3 +26,4 @@ process.on('unhandledRejection', (err, promise) => {
 });
 
 export default app;
+
