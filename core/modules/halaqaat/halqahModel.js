@@ -1,19 +1,24 @@
 import mongoose from 'mongoose';
-import URLSlugs from 'mongoose-url-slugs';
+// import URLSlugs from 'mongoose-url-slugs';
 import geocoder from '../../../utils/geocoder.js';
 
 const halqahSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    require: true,
   },
   image: {
     type: String,
-    required: true,
+    require: true,
   },
   description: {
     type: String,
-    required: true,
+    require: true,
+  },
+  userId: {
+    type: String,
+    default: '',
+    require: true,
   },
   address: { type: String },
   stars: {
@@ -42,7 +47,6 @@ const halqahSchema = mongoose.Schema({
     },
     end: {
       type: String,
-      required: true,
     },
   },
   occurrence: { type: String, enum: ['weekly', 'biweekly', 'monthly'] },
@@ -64,7 +68,7 @@ const halqahSchema = mongoose.Schema({
   ],
 });
 
-halqahSchema.plugin(URLSlugs('name'));
+// halqahSchema.plugin(URLSlugs('name'));
 halqahSchema.pre('save', async function (next) {
   const loc = await geocoder.geocode(this.address);
   this.location = {

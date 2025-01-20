@@ -4,24 +4,40 @@ import {
   createHalqah,
   getAllHalaqaat,
   getHalqah,
-  updateHalqah
+  updateHalqah,
 } from './halqahController.js';
 
+const routes = [
+  {
+    path: '/halqah',
+    handler: getAllHalaqaat,
+    method: 'GET',
+    auth: true,
+  },
 
-const routes = [{
-  path: "/halqah", handler: getAllHalaqaat, method: 'GET', auth: true
-},
-{
-  path: "/halqah", handler: createHalqah, method: 'POST', auth: true
-},
-{
-  path: "/halqah/:id", handler: getHalqah, method: 'GET', auth: true
-},
-{
-  path: "/halqah/:id", handler: updateHalqah, method: 'POST', auth: true
-},
-{
-  path: "/halqah/:id", handler: updateHalqah, method: 'PATCH', auth: true
-},
-]
+  {
+    path: '/halqah/new/:id',
+    handler: createHalqah,
+    method: 'POST',
+    auth: true,
+  },
+  {
+    path: '/halqah/:id',
+    handler: getHalqah,
+    method: 'GET',
+    auth: true,
+  },
+  {
+    path: '/halqah/:id',
+    handler: updateHalqah,
+    method: 'POST',
+    auth: true,
+  },
+  {
+    path: '/halqah/:id',
+    handler: updateHalqah,
+    method: 'PATCH',
+    auth: true,
+  },
+];
 export default route(routes);

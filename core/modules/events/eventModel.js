@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-
 const eventSchema = mongoose.Schema({
   name: {
     type: String,
@@ -14,7 +13,7 @@ const eventSchema = mongoose.Schema({
   },
   eventBanner: {
     type: String,
-    required: true
+    // required: true,
   },
   location: {
     type: String,
@@ -22,8 +21,12 @@ const eventSchema = mongoose.Schema({
   eventType: {
     type: String,
   },
+  userId: {
+    type: String,
+    default: '',
+  },
 });
 
-const Event  = mongoose.model('Event', eventSchema)
+const Event = mongoose.model('Event', eventSchema);
 
 export default Event;
